@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vivid-harness"
+version = "0.1.0"
+description = "A visual and audio evidence harness for agentic video editing"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["Pillow>=10,<13", "numpy>=1.24,<3", "mcp==1.30.0", "jsonschema>=4.23,<5"]
+
+[project.optional-dependencies]
+asr = ["faster-whisper==1.2.1"]
+harbor = ["harbor==0.6.6"]
+
+[project.scripts]
+vivid = "vivid.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
